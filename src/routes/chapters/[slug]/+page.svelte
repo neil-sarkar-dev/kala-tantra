@@ -36,6 +36,10 @@ $: nextChapter = currentChapterIndex < chapters.length - 1 ? chapters[currentCha
     {/if}
 </nav>
 
+<footer class="copyright">
+    © 2025 Neil Sarkar. All rights reserved.
+</footer>
+
 <style>
     article {
         max-width: 800px;
@@ -100,5 +104,13 @@ $: nextChapter = currentChapterIndex < chapters.length - 1 ? chapters[currentCha
     :global(article p) {
         line-height: 1.6;
         margin: 1em 0;
+    }
+
+    .copyright {
+        text-align: center;
+        color: #999;
+        font-size: 0.9em;
+        padding: 2rem;
+        margin-top: 2rem;
     }
 </style>

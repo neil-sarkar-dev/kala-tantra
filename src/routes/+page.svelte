@@ -30,6 +30,10 @@
 	</div>
 </div>
 
+<footer class="copyright">
+    © 2025 Neil Sarkar. All rights reserved.
+</footer>
+
 <style>
 	.page-container {
 		min-height: 100vh;
@@ -154,6 +158,16 @@
 
 	.home-page .container {
 		max-width: 1200px;
+		width: 100%;
+	}
+
+	.copyright {
+		text-align: center;
+		color: #999;
+		font-size: 0.9em;
+		padding: 2rem;
+		position: fixed;
+		bottom: 0;
 		width: 100%;
 	}
 </style>
