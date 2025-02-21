@@ -14,6 +14,7 @@
 	<div class="content-wrapper">
 		<div class="container">
 			<h1>Kala Tantra</h1>
+			<div class="draft-date">Draft, 20 Feb 2025</div>
 			<h2>Contents</h2>
 			<nav class="chapters-list">
 				<ul>
@@ -75,8 +76,15 @@
 
 	h1 {
 		font-size: 2.5em;
-		margin-bottom: 1em;
+		margin-bottom: 0.5em;
 		text-align: center;
+	}
+
+	.draft-date {
+		text-align: center;
+		color: #999;
+		font-size: 0.9em;
+		margin-bottom: 2em;
 	}
 
 	h2 {
