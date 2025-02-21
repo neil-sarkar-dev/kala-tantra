@@ -21,4 +21,10 @@
 		max-width: 1200px;
 		margin: 0 auto;
 	}
+
+	@media (max-width: 600px) {
+		main {
+			padding: 60px 10px 20px 10px;
+		}
+	}
 </style>

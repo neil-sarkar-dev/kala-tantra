@@ -30,6 +30,12 @@
 		padding: 2rem;
 	}
 
+	@media (max-width: 600px) {
+		.container {
+			padding: 2rem 1rem;
+		}
+	}
+
 	h1 {
 		font-size: 2.5em;
 		margin-bottom: 1em;
