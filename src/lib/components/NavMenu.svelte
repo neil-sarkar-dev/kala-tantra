@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
+	import { base } from '$app/paths';
 	let isOpen = false;
 	export let chapters: { path: string; title: string; number: number }[] = [];
 </script>
@@ -15,6 +16,7 @@
 
 	{#if isOpen}
 		<div class="menu-items" transition:slide>
+			<a href="{base}/" class="menu-item home">Home</a>
 			{#each chapters as chapter}
 				<a href={chapter.path} class="menu-item">
 					{chapter.title}
@@ -93,5 +95,11 @@
 
 	.menu-item:hover {
 		background: #f0f0f0;
+	}
+
+	.menu-item.home {
+		border-bottom: 1px solid #eee;
+		margin-bottom: 0.5rem;
+		padding-bottom: 1rem;
 	}
 </style>

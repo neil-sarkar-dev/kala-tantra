@@ -1,23 +1,24 @@
 <script>
-    /** @type {import('./$types').PageData} */
-    export let data;
-    let currentChapter;
-    let prevChapter;
-    let nextChapter;
+import { base } from '$app/paths';
 
-    async function loadChapters() {
-        const response = await fetch('/api/chapters');
-        const chapters = await response.json();
-        const currentIndex = chapters.findIndex(c => c.path === `/chapters/${data.slug}`);
-        currentChapter = chapters[currentIndex];
-        prevChapter = chapters[currentIndex - 1];
-        nextChapter = chapters[currentIndex + 1];
-    }
+/** @type {import('./$types').PageData} */
+export let data;
 
-    $: if (data.slug) {
-        loadChapters();
-    }
+const chapters = [
+    { title: 'Chapter 1', path: `${base}/chapters/chapter_01`, number: 1 },
+    { title: 'Chapter 2', path: `${base}/chapters/chapter_02`, number: 2 }
+];
+
+$: currentChapterIndex = chapters.findIndex(c => 
+    c.path.endsWith(data.slug) || c.path.endsWith(`${data.slug}/`)
+);
+$: prevChapter = currentChapterIndex > 0 ? chapters[currentChapterIndex - 1] : null;
+$: nextChapter = currentChapterIndex < chapters.length - 1 ? chapters[currentChapterIndex + 1] : null;
 </script>
+
+<nav class="top-nav">
+    <a href="{base}/" class="home-button">Home</a>
+</nav>
 
 <article>
     {@html data.html}
@@ -62,6 +63,26 @@
     }
 
     .nav-button:hover {
+        background: #444;
+    }
+
+    .top-nav {
+        padding: 1rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .home-button {
+        display: inline-block;
+        background: #333;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background 0.2s;
+    }
+
+    .home-button:hover {
         background: #444;
     }
 

@@ -1,31 +1,51 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 
-	let chapters: { title: string; path: string; number: number }[] = [];
-
-	onMount(async () => {
-		try {
-			const response = await fetch('/api/chapters');
-			chapters = await response.json();
-		} catch (e) {
-			console.error('Error loading chapters:', e);
-		}
-	});
+	const chapters = [
+		{ title: 'Chapter 1', path: `${base}/chapters/chapter_01`, number: 1 },
+		{ title: 'Chapter 2', path: `${base}/chapters/chapter_02`, number: 2 }
+	];
 </script>
 
-<h1>Book Contents</h1>
-
-<nav>
-	<ul>
-		{#each chapters as chapter}
-			<li>
-				<a href={chapter.path}>{chapter.title}</a>
-			</li>
-		{/each}
-	</ul>
-</nav>
+<div class="container">
+	<h1>Kala Tantra</h1>
+	<h2>Contents</h2>
+	<nav class="chapters-list">
+		<ul>
+			{#each chapters as chapter}
+				<li>
+					<a href={chapter.path}>
+						<span class="chapter-number">Chapter {chapter.number}</span>
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</nav>
+</div>
 
 <style>
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 2rem;
+	}
+
+	h1 {
+		font-size: 2.5em;
+		margin-bottom: 1em;
+		text-align: center;
+	}
+
+	h2 {
+		font-size: 1.8em;
+		margin-bottom: 1.5em;
+		color: #444;
+	}
+
+	.chapters-list {
+		margin-top: 2rem;
+	}
+
 	ul {
 		list-style: none;
 		padding: 0;
@@ -33,15 +53,29 @@
 	
 	li {
 		margin: 1em 0;
+		transition: transform 0.2s;
+	}
+
+	li:hover {
+		transform: translateX(10px);
 	}
 	
 	a {
+		display: block;
 		color: #333;
 		text-decoration: none;
-		font-size: 1.2em;
+		font-size: 1.4em;
+		padding: 1rem;
+		background: #f5f5f5;
+		border-radius: 8px;
+		transition: background 0.2s;
 	}
 	
 	a:hover {
-		text-decoration: underline;
+		background: #ebebeb;
+	}
+
+	.chapter-number {
+		font-weight: 500;
 	}
 </style>

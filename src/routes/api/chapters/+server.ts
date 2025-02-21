@@ -1,27 +1,22 @@
 import { json } from '@sveltejs/kit';
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import type { RequestEvent } from '@sveltejs/kit';
 
 export const prerender = true;
 
-export async function GET() {
+export async function GET({ url }: RequestEvent) {
     try {
-        const chaptersDir = path.join(process.cwd(), 'src', 'chapters');
-        const files = await fs.readdir(chaptersDir);
+        const base = url.pathname.startsWith('/kala-tantra') ? '/kala-tantra' : '';
+        const chapterData = [
+            { number: 1, filename: 'chapter_01' },
+            { number: 2, filename: 'chapter_02' }
+        ];
         
-        const chapters = files
-            .filter(file => file.endsWith('.md'))
-            .map(file => {
-                const name = file.replace('.md', '');
-                const number = parseInt(name.replace('chapter_', ''));
-                return {
-                    title: `Chapter ${number}`,
-                    path: `/chapters/${name}`,
-                    number
-                };
-            })
-            .sort((a, b) => a.number - b.number);
-            
+        const chapters = chapterData.map(({ number, filename }) => ({
+            title: `Chapter ${number}`,
+            path: `${base}/chapters/${filename}`,
+            number
+        }));
+        
         return json(chapters);
     } catch (e) {
         console.error('Error loading chapters:', e);

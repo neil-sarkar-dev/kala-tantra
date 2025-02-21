@@ -1,17 +1,12 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { base } from '$app/paths';
 	import NavMenu from '$lib/components/NavMenu.svelte';
-	import { onMount } from 'svelte';
 
-	let chapters: { title: string; path: string; number: number }[] = [];
-
-	onMount(async () => {
-		try {
-			const response = await fetch('/api/chapters');
-			chapters = await response.json();
-		} catch (e) {
-			console.error('Error loading chapters:', e);
-		}
-	});
+	const chapters = [
+		{ title: 'Chapter 1', path: `${base}/chapters/chapter_01`, number: 1 },
+		{ title: 'Chapter 2', path: `${base}/chapters/chapter_02`, number: 2 }
+	];
 </script>
 
 <NavMenu {chapters} />
