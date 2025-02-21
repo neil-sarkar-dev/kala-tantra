@@ -10,27 +10,57 @@
 	});
 </script>
 
-<div class="container">
-	<h1>Kala Tantra</h1>
-	<h2>Contents</h2>
-	<nav class="chapters-list">
-		<ul>
-			{#each chapters as chapter}
-				<li>
-					<a href={chapter.path}>
-						<span class="chapter-number">Chapter {chapter.number}</span>
-					</a>
-				</li>
-			{/each}
-		</ul>
-	</nav>
+<div class="page-container home-page">
+	<div class="content-wrapper">
+		<div class="container">
+			<h1>Kala Tantra</h1>
+			<h2>Contents</h2>
+			<nav class="chapters-list">
+				<ul>
+					{#each chapters as chapter}
+						<li>
+							<a href={chapter.path}>
+								<span class="chapter-number">Chapter {chapter.number}</span>
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</nav>
+		</div>
+	</div>
 </div>
 
 <style>
+	.page-container {
+		min-height: 100vh;
+		width: 100%;
+		background-image: url('/images/home_background.jpg');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: -1;
+	}
+
+	.content-wrapper {
+		position: relative;
+		min-height: 100vh;
+		width: 100%;
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+	}
+
 	.container {
-		max-width: 1000px;
-		margin: 0 auto;
+		position: relative;
+		max-width: 1600px;
+		margin: 2rem auto;
 		padding: 2rem;
+		background-color: rgba(var(--background-color-rgb), 0.9);
+		backdrop-filter: blur(5px);
+		border-radius: 16px;
 	}
 
 	@media (max-width: 600px) {
@@ -98,5 +128,10 @@
 		ul {
 			grid-template-columns: 1fr;
 		}
+	}
+
+	.home-page .container {
+		max-width: 1600px;
+		width: 100%;
 	}
 </style>

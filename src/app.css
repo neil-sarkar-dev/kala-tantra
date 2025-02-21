@@ -1,6 +1,7 @@
 /* Base styles for the app */
 :root {
   --bg-color: #ffffff;
+  --background-color-rgb: 255, 255, 255;
   --text-color: #333333;
   --border-color: #eeeeee;
   --chapter-bg: #f5f5f5;
@@ -10,6 +11,7 @@
 
 :root.dark {
   --bg-color: #1a1a1a;
+  --background-color-rgb: 26, 26, 26;
   --text-color: #ffffff;
   --border-color: #333333;
   --chapter-bg: #2a2a2a;
