@@ -2,6 +2,8 @@ import { json } from '@sveltejs/kit';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
+export const prerender = true;
+
 export async function GET() {
     try {
         const chaptersDir = path.join(process.cwd(), 'src', 'chapters');
