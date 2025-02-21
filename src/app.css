@@ -5,6 +5,7 @@
   --border-color: #eeeeee;
   --chapter-bg: #f5f5f5;
   --chapter-bg-hover: #ebebeb;
+  font-family: 'Lora', serif;
 }
 
 :root.dark {
@@ -20,4 +21,5 @@ body {
   color: var(--text-color);
   margin: 0;
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Lora', serif;
 }
