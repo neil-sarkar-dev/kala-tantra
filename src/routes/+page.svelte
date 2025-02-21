@@ -137,12 +137,20 @@
 	}
 
 	@media (max-width: 768px) {
-		ul {
-			grid-template-columns: 1fr;
+		.container {
+			padding: 2rem 1rem;
 		}
-	}
-
-	@media (max-width: 768px) {
+		h1 {
+			font-size: 2em;
+			margin-bottom: 0.3em;
+		}
+		h2 {
+			font-size: 1.5em;
+			margin-bottom: 1em;
+		}
+		.draft-date {
+			margin-bottom: 1.5em;
+		}
 		ul {
 			grid-template-columns: repeat(2, 1fr);
 			gap: 0.5rem;
@@ -153,7 +161,18 @@
 			padding: 0.5rem 0.75rem;
 		}
 	}
+
 	@media (max-width: 480px) {
+		h1 {
+			font-size: 1.8em;
+		}
+		h2 {
+			font-size: 1.3em;
+			margin-bottom: 0.8em;
+		}
+		.draft-date {
+			margin-bottom: 1.2em;
+		}
 		ul {
 			gap: 0.4rem;
 			column-gap: 0.75rem;
