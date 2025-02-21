@@ -7,6 +7,11 @@
 
 	function toggleTheme() {
 		$theme = $theme === 'dark' ? 'light' : 'dark';
+		isOpen = false;
+	}
+
+	function closeMenu() {
+		isOpen = false;
 	}
 </script>
 
@@ -21,12 +26,12 @@
 
 	{#if isOpen}
 		<div class="menu-items" transition:slide>
-			<a href="{base}/" class="menu-item home">Home</a>
+			<a href="{base}/" class="menu-item home" on:click={closeMenu}>Home</a>
 			<button class="menu-item theme-toggle" on:click={toggleTheme}>
 				{$theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
 			</button>
 			{#each chapters as chapter}
-				<a href={chapter.path} class="menu-item">
+				<a href={chapter.path} class="menu-item" on:click={closeMenu}>
 					{chapter.title}
 				</a>
 			{/each}
