@@ -130,6 +130,28 @@
 		}
 	}
 
+	@media (max-width: 768px) {
+		ul {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 0.5rem;
+			column-gap: 1rem;
+		}
+		a {
+			font-size: 1em;
+			padding: 0.5rem 0.75rem;
+		}
+	}
+	@media (max-width: 480px) {
+		ul {
+			gap: 0.4rem;
+			column-gap: 0.75rem;
+		}
+		a {
+			font-size: 0.9em;
+			padding: 0.4rem 0.6rem;
+		}
+	}
+
 	.home-page .container {
 		max-width: 1200px;
 		width: 100%;
