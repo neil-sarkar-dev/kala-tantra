@@ -39,7 +39,7 @@
 	h2 {
 		font-size: 1.8em;
 		margin-bottom: 1.5em;
-		color: #444;
+		color: var(--text-color);
 	}
 
 	.chapters-list {
@@ -62,17 +62,17 @@
 	
 	a {
 		display: block;
-		color: #333;
+		color: var(--text-color);
 		text-decoration: none;
 		font-size: 1.4em;
 		padding: 1rem;
-		background: #f5f5f5;
+		background: var(--chapter-bg);
 		border-radius: 8px;
-		transition: background 0.2s;
+		transition: background 0.2s, transform 0.2s;
 	}
 	
 	a:hover {
-		background: #ebebeb;
+		background: var(--chapter-bg-hover);
 	}
 
 	.chapter-number {

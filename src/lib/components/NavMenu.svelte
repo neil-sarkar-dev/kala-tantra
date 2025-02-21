@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { base } from '$app/paths';
+	import { theme } from '$lib/stores/theme';
 	let isOpen = false;
 	export let chapters: { path: string; title: string; number: number }[] = [];
+
+	function toggleTheme() {
+		$theme = $theme === 'dark' ? 'light' : 'dark';
+	}
 </script>
 
 <nav class="nav-menu">
@@ -17,6 +22,9 @@
 	{#if isOpen}
 		<div class="menu-items" transition:slide>
 			<a href="{base}/" class="menu-item home">Home</a>
+			<button class="menu-item theme-toggle" on:click={toggleTheme}>
+				{$theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+			</button>
 			{#each chapters as chapter}
 				<a href={chapter.path} class="menu-item">
 					{chapter.title}
@@ -53,7 +61,7 @@
 		position: absolute;
 		height: 3px;
 		width: 100%;
-		background: #333;
+		background: var(--text-color, #333);
 		border-radius: 3px;
 		transition: all 0.3s ease;
 	}
@@ -80,7 +88,7 @@
 		position: fixed;
 		top: 60px;
 		left: 0;
-		background: white;
+		background: var(--bg-color, white);
 		box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 		padding: 1rem;
 		min-width: 200px;
@@ -90,7 +98,7 @@
 		display: block;
 		padding: 0.5rem 1rem;
 		text-decoration: none;
-		color: #333;
+		color: var(--text-color, #333);
 	}
 
 	.menu-item:hover {
@@ -99,6 +107,18 @@
 
 	.menu-item.home {
 		border-bottom: 1px solid #eee;
+		margin-bottom: 0.5rem;
+		padding-bottom: 1rem;
+	}
+
+	.theme-toggle {
+		background: none;
+		border: none;
+		cursor: pointer;
+		width: 100%;
+		text-align: left;
+		font-size: inherit;
+		border-bottom: 1px solid var(--border-color, #eee);
 		margin-bottom: 0.5rem;
 		padding-bottom: 1rem;
 	}
