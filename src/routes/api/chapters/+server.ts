@@ -6,16 +6,17 @@ export const prerender = true;
 export async function GET({ url }: RequestEvent) {
     try {
         const base = url.pathname.startsWith('/kala-tantra') ? '/kala-tantra' : '';
-        const chapterData = [
-            { number: 1, filename: 'chapter_01' },
-            { number: 2, filename: 'chapter_02' }
-        ];
+        const chapterCount = 16;
         
-        const chapters = chapterData.map(({ number, filename }) => ({
-            title: `Chapter ${number}`,
-            path: `${base}/chapters/${filename}`,
-            number
-        }));
+        const chapters = Array.from({ length: chapterCount }, (_, i) => {
+            const number = i + 1;
+            const filename = `chapter_${String(number).padStart(2, '0')}`;
+            return {
+                title: `Chapter ${number}`,
+                path: `${base}/chapters/${filename}`,
+                number
+            };
+        });
         
         return json(chapters);
     } catch (e) {

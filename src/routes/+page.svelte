@@ -1,10 +1,13 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { onMount } from 'svelte';
 
-	const chapters = [
-		{ title: 'Chapter 1', path: `${base}/chapters/chapter_01`, number: 1 },
-		{ title: 'Chapter 2', path: `${base}/chapters/chapter_02`, number: 2 }
-	];
+	let chapters: { title: string; path: string; number: number }[] = [];
+
+	onMount(async () => {
+		const response = await fetch(`${base}/api/chapters`);
+		chapters = await response.json();
+	});
 </script>
 
 <div class="container">
@@ -25,7 +28,7 @@
 
 <style>
 	.container {
-		max-width: 800px;
+		max-width: 1000px;
 		margin: 0 auto;
 		padding: 2rem;
 	}
@@ -55,10 +58,16 @@
 	ul {
 		list-style: none;
 		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(8, auto);
+		grid-auto-flow: column;
+		gap: 1rem;
+		column-gap: 2rem;
 	}
 	
 	li {
-		margin: 1em 0;
+		margin: 0;
 		transition: transform 0.2s;
 	}
 
@@ -70,8 +79,8 @@
 		display: block;
 		color: var(--text-color);
 		text-decoration: none;
-		font-size: 1.4em;
-		padding: 1rem;
+		font-size: 1.2em;
+		padding: 0.7rem 1rem;
 		background: var(--chapter-bg);
 		border-radius: 8px;
 		transition: background 0.2s, transform 0.2s;
@@ -83,5 +92,11 @@
 
 	.chapter-number {
 		font-weight: 500;
+	}
+
+	@media (max-width: 768px) {
+		ul {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

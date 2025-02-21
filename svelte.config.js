@@ -14,6 +14,16 @@ const config = {
 		}),
 		paths: {
 			base: process.env.NODE_ENV === 'production' ? '/kala-tantra' : ''
+		},
+		prerender: {
+			handleHttpError: ({ path, referrer, message }) => {
+				// Skip 404 errors when prerendering
+				if (message.includes('404')) {
+					return;
+				}
+				// Throw other errors
+				throw new Error(message);
+			}
 		}
 	},
 	

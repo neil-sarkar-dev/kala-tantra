@@ -1,13 +1,16 @@
 <script>
 import { base } from '$app/paths';
+import { onMount } from 'svelte';
 
 /** @type {import('./$types').PageData} */
 export let data;
 
-const chapters = [
-    { title: 'Chapter 1', path: `${base}/chapters/chapter_01`, number: 1 },
-    { title: 'Chapter 2', path: `${base}/chapters/chapter_02`, number: 2 }
-];
+let chapters = [];
+
+onMount(async () => {
+    const response = await fetch(`${base}/api/chapters`);
+    chapters = await response.json();
+});
 
 $: currentChapterIndex = chapters.findIndex(c => 
     c.path.endsWith(data.slug) || c.path.endsWith(`${data.slug}/`)
