@@ -1,4 +1,6 @@
-# sv
+# Kala Tantra
+Draft 20 Feb 2025
+Neil Sarkar
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 

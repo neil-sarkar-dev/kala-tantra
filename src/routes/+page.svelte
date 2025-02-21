@@ -63,7 +63,7 @@
 		max-width: 1200px;
 		margin: 2rem auto;
 		padding: 2rem;
-		background-color: rgba(var(--background-color-rgb), 0.9);
+		background-color: rgba(var(--background-color-rgb), 0.8);
 		backdrop-filter: blur(5px);
 		border-radius: 16px;
 	}
