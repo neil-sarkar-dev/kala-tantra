@@ -44,15 +44,11 @@ $: nextChapter = currentChapterIndex < chapters.length - 1 ? chapters[currentCha
     }
     
     .chapter-navigation {
-        position: fixed;
-        bottom: 2rem;
-        left: 0;
-        right: 0;
+        max-width: 500px;
+        margin: 2rem auto;
         display: flex;
         justify-content: space-between;
         padding: 0 2rem;
-        max-width: 800px;
-        margin: 0 auto;
         gap: 1rem;
     }
 

@@ -55,7 +55,7 @@
 
 	.container {
 		position: relative;
-		max-width: 1600px;
+		max-width: 1200px;
 		margin: 2rem auto;
 		padding: 2rem;
 		background-color: rgba(var(--background-color-rgb), 0.9);
@@ -131,7 +131,7 @@
 	}
 
 	.home-page .container {
-		max-width: 1600px;
+		max-width: 1200px;
 		width: 100%;
 	}
 </style>
