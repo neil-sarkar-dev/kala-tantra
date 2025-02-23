@@ -14,7 +14,7 @@
 	<div class="content-wrapper">
 		<div class="container">
 			<h1>Kala Tantra</h1>
-			<div class="draft-date">Draft, 20 Feb 2025</div>
+			<div class="draft-date">Draft, 20 Feb 2025, v0.1</div>
 			<h2>Contents</h2>
 			<nav class="chapters-list">
 				<ul>
